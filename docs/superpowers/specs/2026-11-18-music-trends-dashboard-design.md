@@ -61,6 +61,10 @@ week, month, quarter, year, half_yearly, all_time; also listening/era activity; 
 Last.fm (current charts only, so daily snapshots), SoundCloud (lifetime `playback_count`, so daily snapshots).
 Caveat (Claude's call, awaiting owner): these audiences are not "everyone". Label every world chart with its source; never claim all listeners.
 
+Owner answers (2026-11-18):
+- "Popular period" = **popular in the world** (primary view). The owner's own taste is a comparison, not the lead.
+- Labelling world charts by source ("ListenBrainz listeners, this year", etc.) is accepted. Never say "everyone".
+
 ## Open questions (grilling)
 1. ~~Which genres, and how many artists per genre?~~ Answered: artists and genres from the "All" playlist.
 2. Where does the daily collector run (Worker crons vs GitHub Actions)?
