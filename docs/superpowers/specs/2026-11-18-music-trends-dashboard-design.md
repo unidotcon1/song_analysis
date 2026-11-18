@@ -42,8 +42,14 @@ Owner's words: "find trends in what people like based on listen and the time per
 - Instruments panel shows "based on N credited recordings", never implies full coverage.
 - The 50-subrequest cap bounds how much one scheduled run can fetch; see open questions.
 
+## Scope change (owner, 2026-11-18)
+Start with **the owner's own artists** (Spotify user "L.Quekster"), not a genre-wide crawl.
+Genre-wide coverage (Last.fm top artists per tag) becomes a later phase.
+The profile URL cannot be read directly: Dev Mode removed `GET /users/{id}`; the app must log the owner in (OAuth) and use `/me/*`.
+Unverified until tested with the owner's app: `GET /me/following?type=artist`, `GET /me/top/artists`, and whether artist `genres` still returns.
+
 ## Open questions (grilling)
-1. Which genres, and how many artists per genre?
+1. ~~Which genres, and how many artists per genre?~~ Replaced: what counts as "my artists"?
 2. Where does the daily collector run (Worker crons vs GitHub Actions)?
 3. What does "popular period" mean per artist (peak year of release? peak listening window?).
 4. Dashboard views and layout.
