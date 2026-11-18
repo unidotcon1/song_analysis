@@ -55,6 +55,12 @@ the first import runs as a local script (owner starts it), not inside one Worker
 Playlist items carry `added_at` (unverified in Dev Mode): a free personal time series ("when I added each artist").
 Owner should request Spotify's extended streaming history now (arrives in days): true per-play timestamps.
 
+Owner (2026-11-18): trends must also come from **other people**, not only the owner. The world view is required.
+Sources for other people: **ListenBrainz sitewide stats** (top artists/recordings with listen counts for this_week, this_month, this_year,
+week, month, quarter, year, half_yearly, all_time; also listening/era activity; top 1000 artists per period; auth need and terms unverified),
+Last.fm (current charts only, so daily snapshots), SoundCloud (lifetime `playback_count`, so daily snapshots).
+Caveat (Claude's call, awaiting owner): these audiences are not "everyone". Label every world chart with its source; never claim all listeners.
+
 ## Open questions (grilling)
 1. ~~Which genres, and how many artists per genre?~~ Answered: artists and genres from the "All" playlist.
 2. Where does the daily collector run (Worker crons vs GitHub Actions)?
