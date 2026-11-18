@@ -48,8 +48,15 @@ Genre-wide coverage (Last.fm top artists per tag) becomes a later phase.
 The profile URL cannot be read directly: Dev Mode removed `GET /users/{id}`; the app must log the owner in (OAuth) and use `/me/*`.
 Unverified until tested with the owner's app: `GET /me/following?type=artist`, `GET /me/top/artists`, and whether artist `genres` still returns.
 
+Owner confirmed: "my artists" = the artists in the owner's own Spotify playlist **"All"** (created by the owner, **1,306 songs**).
+Genres come from those artists. Readable in Dev Mode because the owner owns the playlist.
+Batch `GET /artists` was removed, so genres need one call per artist (est. several hundred calls):
+the first import runs as a local script (owner starts it), not inside one Worker run (50-subrequest cap).
+Playlist items carry `added_at` (unverified in Dev Mode): a free personal time series ("when I added each artist").
+Owner should request Spotify's extended streaming history now (arrives in days): true per-play timestamps.
+
 ## Open questions (grilling)
-1. ~~Which genres, and how many artists per genre?~~ Replaced: what counts as "my artists"?
+1. ~~Which genres, and how many artists per genre?~~ Answered: artists and genres from the "All" playlist.
 2. Where does the daily collector run (Worker crons vs GitHub Actions)?
 3. What does "popular period" mean per artist (peak year of release? peak listening window?).
 4. Dashboard views and layout.
