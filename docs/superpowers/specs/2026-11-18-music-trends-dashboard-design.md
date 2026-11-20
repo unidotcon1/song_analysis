@@ -65,6 +65,12 @@ Owner answers (2026-11-18):
 - "Popular period" = **popular in the world** (primary view). The owner's own taste is a comparison, not the lead.
 - Labelling world charts by source ("ListenBrainz listeners, this year", etc.) is accepted. Never say "everyone".
 
+Owner answers (2026-11-20):
+- An artist's world **popular period** = (a) the release years of their most-listened songs (a snapshot, not a time series)
+  plus (b) a rising/falling marker from our own daily snapshots, shown only once enough days exist.
+- **Integrity is a hard requirement (anti-goal):** never fabricate or interpolate data. No invented year-by-year listen curves.
+  Anything missing, thin or unverified is shown as such ("not enough data yet", "N credited recordings", source label on every chart).
+
 ## Open questions (grilling)
 1. ~~Which genres, and how many artists per genre?~~ Answered: artists and genres from the "All" playlist.
 2. Where does the daily collector run (Worker crons vs GitHub Actions)?
