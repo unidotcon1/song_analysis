@@ -78,6 +78,11 @@ Owner answers (2026-11-21):
 - Mockups: https://claude.ai/artifact/C7ykhYnN4GVYpLudFQC19C (artists with filters, artist page, instruments). Placeholder values only.
 - Owner asked for a well-regarded dashboarding tool and a site that "runs smoothly".
 
+- **Instruments are prominent (owner, 2026-11-21):** the home screen leads with a large instrument picker (Guitar, Piano, Bass, Drums,
+  Trumpet, Vocals, Brazilian percussion, Bossa nova set), each tile showing "n of m credited". Selecting one turns the artist table into
+  "most listened <instrument> artists" with a "Credited on <instrument>" column, and a side panel shows instrument share for the chosen genre.
+  Honesty rule kept: a missing credit never means the instrument was absent; the page says so.
+
 Research (2026-11-21, secondary sources; bundle sizes differ by method, treat as rough):
 - React charting: Recharts is the common default under ~10k points (SVG, simple API, no heatmap); Apache ECharts handles large data,
   has canvas rendering, heatmaps and tree-shaking; visx is smallest but you build more; Nivo is design-led.
