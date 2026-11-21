@@ -71,6 +71,26 @@ Owner answers (2026-11-20):
 - **Integrity is a hard requirement (anti-goal):** never fabricate or interpolate data. No invented year-by-year listen curves.
   Anything missing, thin or unverified is shown as such ("not enough data yet", "N credited recordings", source label on every chart).
 
+Owner answers (2026-11-21):
+- The dashboard **starts from artists** (ranked artist list), not a genre overview.
+- **Filters** the user controls: genre, artist (search), instrument, plus source and period; optional "only artists in my All playlist".
+  Filters combine (AND), show an "n artists match" summary and a clear-all, and live in the URL so a view can be shared.
+- Mockups: https://claude.ai/artifact/C7ykhYnN4GVYpLudFQC19C (artists with filters, artist page, instruments). Placeholder values only.
+- Owner asked for a well-regarded dashboarding tool and a site that "runs smoothly".
+
+Research (2026-11-21, secondary sources; bundle sizes differ by method, treat as rough):
+- React charting: Recharts is the common default under ~10k points (SVG, simple API, no heatmap); Apache ECharts handles large data,
+  has canvas rendering, heatmaps and tree-shaking; visx is smallest but you build more; Nivo is design-led.
+- Self-hosted BI tools (Metabase, Superset, Grafana, Evidence) are separate servers, aimed at internal reporting; embedding Metabase has
+  paid-tier limits. They do not fit a free Cloudflare setup or the Buttermilk/Midnight Blue theme.
+
+Claude's calls (awaiting owner objection):
+- **Charts: Apache ECharts**, imported piece by piece (tree-shaken), canvas renderer, loaded lazily. Reason: instrument-by-genre is a heatmap
+  Recharts lacks, and the data is small enough that either would be fast.
+- **Smoothness**: aggregate data on the server so the browser gets small prepared tables; filters change in the browser without a page load;
+  memoised charts; skeleton states; URL-held filters. Proposed budget (to be measured, not assumed): first-load JS under ~250 kB gzipped,
+  filter change feels instant (<100 ms), tested with Lighthouse/Playwright at desktop and phone size.
+
 ## Open questions (grilling)
 1. ~~Which genres, and how many artists per genre?~~ Answered: artists and genres from the "All" playlist.
 2. Where does the daily collector run (Worker crons vs GitHub Actions)?
